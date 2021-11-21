@@ -2,4 +2,5 @@
     <string name="app_name">Teksell</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="producto">Lorem ipsum dolor sit amet consectetur adipiscing elit viverra dapibus, nunc donec phasellus arcu tempus faucibus curae rhoncus ac cum, aptent vestibulum conubia congue vehicula posuere massa blandit. Per risus laoreet dapibus leo sagittis dis orci nisi velit, augue luctus mattis a est faucibus varius euismod, turpis congue tempus bibendum proin pretium placerat et.</string>
 </resources>
