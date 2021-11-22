@@ -7,20 +7,18 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/textView2"
+        android:id="@+id/rvHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="home" />
     <RelativeLayout
-        android:id="@+id/rvHome"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"        >
+        android:layout_height="match_parent"  >
 
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.2"
-            android:background="@color/primaryColor" />
+             />
 
         <ProgressBar
             android:layout_width="wrap_content"
