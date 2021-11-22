@@ -62,7 +62,7 @@ dependencies {
     androidTestImplementation("androidx.navigation:navigation-testing:2.3.5")
 
 
-
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 
     

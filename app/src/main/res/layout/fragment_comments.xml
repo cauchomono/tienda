@@ -25,16 +25,16 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputEditText2"
-        android:layout_width="287dp"
-        android:layout_height="133dp"
-        android:layout_marginBottom="456dp"
+        android:layout_width="282dp"
+        android:layout_height="113dp"
         android:gravity="top"
         android:hint="Escribe tu comentario..."
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.333"
+        app:layout_constraintVertical_bias="0.264"
         tools:layout_conversion_absoluteHeight="141dp"
         tools:layout_conversion_absoluteWidth="325dp" />
 
@@ -42,20 +42,22 @@
         android:id="@+id/button"
         android:layout_width="120dp"
         android:layout_height="48dp"
-        android:layout_marginStart="228dp"
+        android:layout_marginTop="8dp"
         android:text="Comentar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.786"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputEditText2" />
 
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="411dp"
+        android:layout_height="443dp"
+        android:layout_marginTop="288dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout3"
