@@ -30,7 +30,11 @@
         android:id="@+id/navAdminFragment"
         android:name="com.ciclo4.teksell.ui.fragments.AdminFragment"
         android:label="fragment_admin"
-        tools:layout="@layout/fragment_admin" />
+        tools:layout="@layout/fragment_admin" >
+        <action
+            android:id="@+id/action_navAdminFragment_to_adminDetailFragmentDialog"
+            app:destination="@id/adminDetailFragmentDialog" />
+    </fragment>
     <fragment
         android:id="@+id/navCommentsFragment"
         android:name="com.ciclo4.teksell.ui.fragments.ComentsFragment"
@@ -52,4 +56,10 @@
         android:name="com.ciclo4.teksell.ui.fragments.OrderFragment"
         android:label="OrderDetailFragmentDialog"
         tools:layout="@layout/fragment_order_detail_dialog"/>
+
+    <dialog
+        android:id="@+id/adminDetailFragmentDialog"
+        android:name="com.ciclo4.teksell.ui.fragments.AdminDetailDialogFragment"
+        android:label="AdminDetailFragmentDialog"
+        tools:layout="@layout/fragment_admin_detail_dialog"/>
 </navigation>
