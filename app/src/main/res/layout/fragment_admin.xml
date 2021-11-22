@@ -51,6 +51,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Dirección"
+                        android:layout_margin="5sp"
                         android:gravity="center_horizontal"
                         android:layout_gravity="center_horizontal"/>
 
@@ -58,6 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Telefono"
+                        android:layout_margin="5sp"
                         android:gravity="center_horizontal"
                         android:layout_gravity="center_horizontal"/>
 
@@ -66,6 +68,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:text="Correo"
+                        android:layout_margin="5sp"
                         android:layout_gravity="center_horizontal"/>
 
 

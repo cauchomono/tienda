@@ -25,8 +25,8 @@ class HomeFragment : Fragment() {
 
     val productos = listOf(
         Productos("Samsung","S21","Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://m.media-amazon.com/images/I/81J0QOSKU-L._AC_SX425_.jpg"),
-        Productos("Samsung","S20","Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://m.media-amazon.com/images/I/81J0QOSKU-L._AC_SX425_.jpg"),
-        Productos("Samsung","S19","Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://m.media-amazon.com/images/I/81J0QOSKU-L._AC_SX425_.jpg")
+        Productos("Motorola","G20","Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://tigocolombia.vteximg.com.br/arquivos/ids/159947-1000-1000/G20_Azul_1.png?v=637679410118370000"),
+        Productos("Iphone","10","Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://m.media-amazon.com/images/I/61HHOHgYb1L._AC_SL1500_.jpg")
     )
 
 
