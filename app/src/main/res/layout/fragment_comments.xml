@@ -66,31 +66,29 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="341dp"
-                android:layout_height="124dp"
-                android:layout_marginTop="224dp"
+                android:layout_width="337dp"
+                android:layout_height="180dp"
+                android:layout_marginTop="20dp"
                 android:text="La opinion de otro usuario..."
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.528"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="344dp"
                 android:layout_height="21dp"
-                android:layout_marginTop="256dp"
+                android:layout_marginTop="40dp"
                 android:text="OTRO USUARIO"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.537"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="344dp"
                 android:layout_height="21dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:text="USUARIO"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +101,6 @@
                 android:layout_marginTop="20dp"
                 android:text="La opinion de un usuario..."
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.492"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
