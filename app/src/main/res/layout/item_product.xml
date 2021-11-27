@@ -15,8 +15,9 @@
         <ImageView
             android:id="@+id/ivImagenProducto"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_margin="10dp"
+
             android:src="@mipmap/ic_launcher" />
 
         <TextView
@@ -37,7 +38,6 @@
             android:text="$999.999"
             android:textColor="@color/primaryTextColor"
             android:textSize="15sp" />
-
 
     </LinearLayout>
 
