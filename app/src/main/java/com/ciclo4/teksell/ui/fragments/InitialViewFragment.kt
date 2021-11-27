@@ -45,6 +45,10 @@ class InitialViewFragment : Fragment() {
             findNavController().navigate(R.id.loginFragment)
         }
 
+        val registerBtn = view.findViewById<Button>(R.id.registerBtn)
+        registerBtn.setOnClickListener {
+            findNavController().navigate(R.id.registerFragment)
+        }
 
 
     }
