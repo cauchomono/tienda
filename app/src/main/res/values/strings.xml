@@ -3,4 +3,23 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="producto">Lorem ipsum dolor sit amet consectetur adipiscing elit viverra dapibus, nunc donec phasellus arcu tempus faucibus curae rhoncus ac cum, aptent vestibulum conubia congue vehicula posuere massa blandit. Per risus laoreet dapibus leo sagittis dis orci nisi velit, augue luctus mattis a est faucibus varius euismod, turpis congue tempus bibendum proin pretium placerat et.</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="usernameStr">Username</string>
+    <string name="entrarStr">Entrar</string>
+    <string name="emailStr">Email</string>
+    <string name="usuarioStr">Usuario</string>
+    <string name="nombresStr">Nombres</string>
+    <string name="direccionStr">Dirección</string>
+    <string name="numeroCelularStr">Número Celular</string>
+    <string name="contrasenaStr">Contraseña</string>
+    <string name="confirmarContrasenaStr">Confirmar Contraseña</string>
+    <string name="bienvenidos_a_nuestra_tiendaStr">Bienvenidos a nuestra tienda</string>
 </resources>

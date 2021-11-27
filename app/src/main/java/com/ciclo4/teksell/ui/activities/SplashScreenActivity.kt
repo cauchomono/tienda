@@ -23,7 +23,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val animation = loadAnimation(this, R.anim.animation)
         binding.imageView.startAnimation(animation)
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, InitialActivity::class.java)
 
         animation.setAnimationListener(object:Animation.AnimationListener{
             override fun onAnimationStart(animation: Animation?) {
