@@ -9,7 +9,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHome"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="563dp"
         android:text="home" />
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,8 +17,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-             />
+            android:layout_height="match_parent" />
 
         <ProgressBar
             android:layout_width="wrap_content"

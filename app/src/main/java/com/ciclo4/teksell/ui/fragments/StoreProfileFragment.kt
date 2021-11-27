@@ -6,14 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ciclo4.teksell.R
-import com.google.android.gms.maps.MapView
-import com.google.android.gms.maps.GoogleMap
-
-
-
-
-
-
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

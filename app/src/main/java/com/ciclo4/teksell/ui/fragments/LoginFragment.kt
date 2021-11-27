@@ -1,5 +1,6 @@
 package com.ciclo4.teksell.ui.fragments
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.model.ListaUsuarios
+import com.ciclo4.teksell.model.Usuario
 import com.ciclo4.teksell.ui.activities.MainActivity
 
 // TODO: Rename parameter arguments, choose names that match
@@ -36,7 +40,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+        ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
@@ -46,10 +50,39 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val enterBtn = view.findViewById<Button>(R.id.enterBtn)
+        val user = view.findViewById<EditText>(R.id.usernameEt).text.toString()
+        val pass = view.findViewById<EditText>(R.id.passwordEt).text.toString()
        enterBtn.setOnClickListener {
-            val intento1  = Intent(this.context, MainActivity::class.java)
-            startActivity(intento1)
+            if(existUser(view)){
+                val intento1  = Intent(this.context, MainActivity::class.java)
+                startActivity(intento1)
+            }
         }
+    }
+
+    fun existUser(view: View):Boolean{
+        val user = view.findViewById<EditText>(R.id.usernameEt).text.toString()
+        val pass = view.findViewById<EditText>(R.id.passwordEt).text.toString()
+        val usuario :Usuario? = ListaUsuarios.getUser(user)
+        if(usuario != null){
+            if(usuario.password == pass){
+                return true
+            }
+            showAlert("Contraseña incorrecta", "Vuelve a ingresar la contraseña...")
+        }
+        else{
+            showAlert("Usuario incorrecto", "No existe el usuario "+user)
+        }
+        return false
+    }
+
+    fun showAlert(alert:String, message:String){
+        val builder: AlertDialog.Builder? = activity?.let {
+            AlertDialog.Builder(it)
+        }
+        builder?.setTitle(alert)
+        builder?.setMessage(message)
+        builder?.show()
     }
 
     companion object {
