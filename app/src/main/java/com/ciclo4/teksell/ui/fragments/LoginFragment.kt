@@ -50,8 +50,6 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val enterBtn = view.findViewById<Button>(R.id.enterBtn)
-        val user = view.findViewById<EditText>(R.id.usernameEt).text.toString()
-        val pass = view.findViewById<EditText>(R.id.passwordEt).text.toString()
        enterBtn.setOnClickListener {
             if(existUser(view)){
                 val intento1  = Intent(this.context, MainActivity::class.java)
