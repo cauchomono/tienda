@@ -5,7 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.navigation.Navigation
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.model.ListaProductos
+import com.squareup.picasso.Picasso
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,10 +41,30 @@ class OrderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order_detail_dialog, container, false)
+        val view =inflater.inflate(R.layout.fragment_order_detail_dialog, container, false)
+        modify(view)
+        val btn = view.findViewById<Button>(R.id.btnAgregar)
+        btn.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.navHomeFragment)
+            ListaProductos.addProductoToCarrito()
+        }
+        return view
+    }
+
+    fun modify(view: View){
+        val producto = ListaProductos.producto
+        val image = view.findViewById<ImageView>(R.id.imageV)
+        val name = view.findViewById<TextView>(R.id.tvName)
+        val price = view.findViewById<TextView>(R.id.tvPrice)
+        val car = view.findViewById<TextView>(R.id.tvCaracteristica)
+        car.text = producto.caracteristicas
+        Picasso.get().load(producto.image).into(image)
+        name.text = (producto.marca+": "+producto.modelo)
+        price.text = ("$" + producto.precio)
     }
 
     companion object {
+
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.

@@ -1,13 +1,20 @@
 package com.ciclo4.teksell.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.model.ListaProductos
 import com.ciclo4.teksell.model.Productos
+import com.ciclo4.teksell.ui.fragments.OrderFragment
 import com.squareup.picasso.Picasso
 
 class ProductosAdapter (val productos:List<Productos>):RecyclerView.Adapter<ProductosAdapter.ProductosHolder>(){
@@ -38,15 +45,14 @@ class ProductosAdapter (val productos:List<Productos>):RecyclerView.Adapter<Prod
             tvPrecioProducto.text = "$"+productos.precio.toString()
             Picasso.get().load(productos.image).into(ivImagenProducto)
             view.setOnClickListener {
-                click()
+                ListaProductos.producto = productos
+                Navigation.findNavController(view).navigate(R.id.navOrderDetailFragmentDialog)
+                //findNavController().navigate(R.id.navOrderDetailFragmentDialog)
             }
 
         }
-
-        fun click(){
-            println("Click")
-        }
     }
+
 
 
 }

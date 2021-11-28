@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_navHomeFragment_to_orderDetailFragmentDialog"
             app:destination="@id/orderDetailFragmentDialog" />
+        <action
+            android:id="@+id/action_navHomeFragment_to_navOrderDetailFragmentDialog"
+            app:destination="@id/navOrderDetailFragmentDialog" />
     </fragment>
     <fragment
         android:id="@+id/navAdminFragment"
@@ -51,11 +54,18 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_store_profile" />
 
+    <fragment
+        android:id="@+id/navOrderDetailFragmentDialog"
+        android:name="com.ciclo4.teksell.ui.fragments.OrderFragment"
+        android:label="OrderDetailFragmentDialog"
+        tools:layout="@layout/fragment_order_detail_dialog" />
+
     <dialog
         android:id="@+id/orderDetailFragmentDialog"
         android:name="com.ciclo4.teksell.ui.fragments.OrderFragment"
         android:label="OrderDetailFragmentDialog"
         tools:layout="@layout/fragment_order_detail_dialog"/>
+
 
     <dialog
         android:id="@+id/adminDetailFragmentDialog"
