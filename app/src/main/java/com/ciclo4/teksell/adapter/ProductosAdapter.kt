@@ -38,9 +38,13 @@ class ProductosAdapter (val productos:List<Productos>):RecyclerView.Adapter<Prod
             tvPrecioProducto.text = "$"+productos.precio.toString()
             Picasso.get().load(productos.image).into(ivImagenProducto)
             view.setOnClickListener {
-
+                click()
             }
 
+        }
+
+        fun click(){
+            println("Click")
         }
     }
 
