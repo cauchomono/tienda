@@ -11,35 +11,33 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="283dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="282dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="24dp"
         android:text="Califica esta App"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_conversion_absoluteHeight="36dp"
         tools:layout_conversion_absoluteWidth="322dp" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText2"
+        android:id="@+id/txtInput"
         android:layout_width="282dp"
         android:layout_height="113dp"
         android:gravity="top"
         android:hint="Escribe tu comentario..."
-        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.264"
         tools:layout_conversion_absoluteHeight="141dp"
         tools:layout_conversion_absoluteWidth="325dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonComentar"
         android:layout_width="120dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -47,65 +45,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.786"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtInput" />
 
-    <ScrollView
-        android:id="@+id/scrollView3"
-        android:layout_width="411dp"
-        android:layout_height="443dp"
-        android:layout_marginTop="288dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="344dp"
+        android:layout_height="318dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/buttonComentar">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout3"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvComments"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="337dp"
-                android:layout_height="180dp"
-                android:layout_marginTop="20dp"
-                android:text="La opinion de otro usuario..."
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="344dp"
-                android:layout_height="21dp"
-                android:layout_marginTop="40dp"
-                android:text="OTRO USUARIO"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="344dp"
-                android:layout_height="21dp"
-                android:layout_marginTop="40dp"
-                android:text="USUARIO"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="341dp"
-                android:layout_height="124dp"
-                android:layout_marginTop="20dp"
-                android:text="La opinion de un usuario..."
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+            android:layout_height="match_parent" />
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

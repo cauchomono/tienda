@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ciclo4.teksell.R
@@ -24,9 +26,12 @@ private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment() {
 
     val productos = listOf(
-        Productos("Samsung","S21","Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://m.media-amazon.com/images/I/81J0QOSKU-L._AC_SX425_.jpg"),
-        Productos("Motorola","G20","Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://tigocolombia.vteximg.com.br/arquivos/ids/159947-1000-1000/G20_Azul_1.png?v=637679410118370000"),
-        Productos("Iphone","10","Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://m.media-amazon.com/images/I/61HHOHgYb1L._AC_SL1500_.jpg")
+        Productos("Samsung","S21","1. Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://m.media-amazon.com/images/I/81J0QOSKU-L._AC_SX425_.jpg"),
+        Productos("Motorola","G20","2. Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://tigocolombia.vteximg.com.br/arquivos/ids/159947-1000-1000/G20_Azul_1.png?v=637679410118370000"),
+        Productos("Iphone","10","3. Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://m.media-amazon.com/images/I/61HHOHgYb1L._AC_SL1500_.jpg"),
+        Productos("Samsung","S21","1. Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://m.media-amazon.com/images/I/81J0QOSKU-L._AC_SX425_.jpg"),
+        Productos("Motorola","G20","2. Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://tigocolombia.vteximg.com.br/arquivos/ids/159947-1000-1000/G20_Azul_1.png?v=637679410118370000"),
+        Productos("Iphone","10","3. Pantalla: 6,7 pulgadas, Resolución: 2.400 x 1.080 píxeles",1000.0,"https://m.media-amazon.com/images/I/61HHOHgYb1L._AC_SL1500_.jpg")
     )
 
 
@@ -41,7 +46,6 @@ class HomeFragment : Fragment() {
         val adapter = ProductosAdapter(productos)
         rvHome.layoutManager = LinearLayoutManager(this.context)
         rvHome.adapter = adapter
-
     }
 
     override fun onCreateView(
@@ -52,6 +56,5 @@ class HomeFragment : Fragment() {
         initRecycler(view)
         return view
     }
-
 
     }
