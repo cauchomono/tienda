@@ -48,7 +48,6 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val enterBtn = view.findViewById<Button>(R.id.enterBtn)
        enterBtn.setOnClickListener {
             if(existUser(view)){

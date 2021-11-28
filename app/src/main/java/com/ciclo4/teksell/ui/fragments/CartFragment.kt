@@ -5,7 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.adapter.ProductosAdapter
+import com.ciclo4.teksell.adapter.ProductosInCartAdapter
+import com.ciclo4.teksell.model.ListaProductos
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,7 +40,17 @@ class CartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cart, container, false)
+
+        val view = inflater.inflate(R.layout.fragment_cart, container, false)
+        initRecycler(view)
+        return view
+    }
+
+    private fun initRecycler(view:View) {
+        val  rvCart: RecyclerView = view.findViewById(R.id.rvCart)
+        val adapter = ProductosInCartAdapter(ListaProductos.productos)
+        rvCart.layoutManager = LinearLayoutManager(this.context)
+        rvCart.adapter = adapter
     }
 
     companion object {
