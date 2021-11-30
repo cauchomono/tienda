@@ -41,6 +41,7 @@
                         android:gravity="center_horizontal"/>
 
                     <TextView
+                        android:id="@+id/userNameVt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
@@ -48,6 +49,7 @@
                         android:layout_gravity="center_horizontal"/>
 
                     <TextView
+                        android:id="@+id/userDirectionVt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Dirección"
@@ -56,6 +58,7 @@
                         android:layout_gravity="center_horizontal"/>
 
                     <TextView
+                        android:id="@+id/userPhoneVt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Telefono"
@@ -64,6 +67,7 @@
                         android:layout_gravity="center_horizontal"/>
 
                     <TextView
+                        android:id="@+id/userEmailVt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
