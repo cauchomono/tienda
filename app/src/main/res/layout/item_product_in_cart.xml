@@ -107,7 +107,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="0dp"
-                app:srcCompat="@android:drawable/ic_menu_delete" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@android:drawable/ic_menu_delete"
+                android:outlineSpotShadowColor="@color/secondaryDarkColor"
+                android:outlineAmbientShadowColor="@color/secondaryDarkColor"/>
 
         </LinearLayout>
     </LinearLayout>

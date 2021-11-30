@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ciclo4.teksell.R
@@ -51,6 +52,7 @@ class CartFragment : Fragment() {
         val adapter = ProductosInCartAdapter(ListaProductos.productos)
         rvCart.layoutManager = LinearLayoutManager(this.context)
         rvCart.adapter = adapter
+        view.findViewById<TextView>(R.id.textView9).text ="Precio total: $"+ ListaProductos.total
     }
 
     companion object {
