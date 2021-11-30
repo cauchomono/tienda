@@ -7,95 +7,95 @@
     android:layout_height="match_parent"
     android:foregroundTint="#912E2E">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/primaryColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarProduct"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            app:title="Detalle del producto"
-            app:titleMargin="5dp" />
+            android:background="@color/primaryColor">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:title="Detalle del producto"
+                app:titleMargin="5dp" />
 
-    <ScrollView
-        android:layout_width="379dp"
-        android:layout_height="643dp"
-        android:layout_margin="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/secondaryColor"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_margin="16dp">
 
-            <ImageView
-                android:id="@+id/imageV"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginLeft="32dp"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_weight="1"
+                android:background="@color/secondaryColor"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Producto"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/imageV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginRight="32dp"
+                    android:src="@mipmap/ic_launcher" />
 
-            <TextView
-                android:id="@+id/tvPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="$999.999"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Producto"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvCaracteristica"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:gravity="center_horizontal"
-                android:text="@string/producto"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="$999.999"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="15sp" />
 
-            <Button
-                android:id="@+id/btnAgregar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="32dp"
-                android:background="#C31111"
-                android:cursorVisible="true"
-                android:foregroundTint="#8A2424"
-                android:shadowColor="@color/cardview_dark_background"
-                android:text="Agregar al carrito"
-                android:textColor="@color/primaryTextColor"
-                app:strokeColor="#7C1B1B"
-                tools:visibility="visible" />
+                <TextView
+                    android:id="@+id/tvCaracteristica"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/producto"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="15sp" />
 
-        </LinearLayout>
-    </ScrollView>
+                <Button
+                    android:id="@+id/btnAgregar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="32dp"
+                    android:background="#C31111"
+                    android:cursorVisible="true"
+                    android:foregroundTint="#8A2424"
+                    android:shadowColor="@color/cardview_dark_background"
+                    android:text="Agregar al carrito"
+                    android:textColor="@color/primaryTextColor"
+                    app:strokeColor="#7C1B1B"
+                    tools:visibility="visible" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
