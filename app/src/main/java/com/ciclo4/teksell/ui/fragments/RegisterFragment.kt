@@ -10,12 +10,13 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.navigation.fragment.findNavController
 import com.ciclo4.teksell.R
-import com.ciclo4.teksell.model.ListaUsuarios
 import com.ciclo4.teksell.model.Usuario
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterFragment : Fragment() {
 
-
+    private val userDb =  FirebaseFirestore.getInstance()
     //override fun onCreate(savedInstanceState: Bundle?) {
      //   super.onCreate(savedInstanceState)
     //}
@@ -66,12 +67,23 @@ class RegisterFragment : Fragment() {
             showAlert("Email", "El formato del correo electronico no coincide")
             return false
         }
-        if(ListaUsuarios.isUser(user)){
-            showAlert("Usuario", "El nombre de usuario ya existe")
-            return false
-        }
+//        if(ListaUsuarios.isUser(user)){
+//            showAlert("Usuario", "El nombre de usuario ya existe")
+//            return false
+//        }
 
-        ListaUsuarios.addUser(Usuario(name,user,pass1,email,address,contact))
+        var userRegistered = hashMapOf(
+            "name" to name,
+            "user" to user,
+            "email" to email,
+            "address" to address,
+            "contact" to contact)
+
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,pass1)
+        userDb.collection("users").document(email).set(
+            userRegistered
+        )
+
         return true
 
     }

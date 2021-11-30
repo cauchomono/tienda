@@ -46,7 +46,7 @@ class ProductosInCartAdapter (val productos:List<Productos>):RecyclerView.Adapte
 
             tvNombreProducto.text = productos.marca + productos.modelo
             tvPrecioProducto.text = "$"+productos.precio.toString()
-            Picasso.get().load(productos.image).into(ivImagenProducto)
+            Picasso.get().load(productos.imagen).into(ivImagenProducto)
             llproduct.setOnClickListener {
                 ListaProductos.producto = productos
                 Navigation.findNavController(view).navigate(R.id.navOrderDetailFragmentDialog)

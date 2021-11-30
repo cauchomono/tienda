@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1095481427766",
+    "project_id": "teksell-36fc8",
+    "storage_bucket": "teksell-36fc8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095481427766:android:1b4eb65fd530a063585597",
+        "android_client_info": {
+          "package_name": "com.ciclo4.teksell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095481427766-l5kjc9n5dkh0rl743p5p1jspufp766kl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ciclo4.teksell",
+            "certificate_hash": "e8b803ed882234e5e763faeedf87a008024da3c5"
+          }
+        },
+        {
+          "client_id": "1095481427766-9b8bkblqu7vj0q47jugc8h85h7c9ar5v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7C1UCCicmnKyc1wlKWztPeGwWZsHYa_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1095481427766-9b8bkblqu7vj0q47jugc8h85h7c9ar5v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

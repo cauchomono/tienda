@@ -71,6 +71,18 @@
                         android:layout_margin="5sp"
                         android:layout_gravity="center_horizontal"/>
 
+                    <Button
+                        android:id="@+id/exitBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Salir" />
+
+                    <Button
+                        android:id="@+id/deleteBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Borrar Cuenta" />
+
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

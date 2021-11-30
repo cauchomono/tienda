@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
+
 }
 
 android {
@@ -70,5 +72,13 @@ dependencies {
 
     //Recycle
     implementation "androidx.recyclerview:recyclerview:1.2.1"
-    
+
+    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    //Firebase ui
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+
+    //firebase firestore
+    implementation 'com.google.firebase:firebase-firestore'
 }

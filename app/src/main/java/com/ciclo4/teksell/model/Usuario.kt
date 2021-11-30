@@ -1,11 +1,15 @@
 package com.ciclo4.teksell.model
 
-data class Usuario(
-    val name: String,
-    val username: String,
-    val password: String,
-    val email: String,
-    val address: String,
-    val contact : String
-)
+import java.io.Serializable
+
+class Usuario(): Serializable {
+    companion object{
+    lateinit var name: String
+    lateinit var username: String
+    lateinit var password: String
+    lateinit var email: String
+    lateinit var address: String
+    lateinit var contact : String
+}
+}
 

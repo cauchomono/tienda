@@ -7,4 +7,5 @@
     <color name="secondaryLightColor">#5e378b</color>
     <color name="secondaryDarkColor">#110033</color>
     <color name="primaryTextColor">#FFFFFFFF</color>
+    <color name="material_on_primary_emphasis_high_type">#FFFFFFFF</color>
 </resources>

@@ -10,31 +10,53 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import com.ciclo4.teksell.R
-import com.ciclo4.teksell.model.ListaUsuarios
-import com.ciclo4.teksell.model.Usuario
 import com.ciclo4.teksell.ui.activities.MainActivity
+import com.firebase.ui.auth.AuthUI
+import com.google.firebase.auth.FirebaseAuth
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    val AUTH_REQUEST_CODE = 1234
+    lateinit var firebaseAuth: FirebaseAuth
+    lateinit var listener: FirebaseAuth.AuthStateListener
+    lateinit var providers: List<AuthUI.IdpConfig>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        firebaseAuth = FirebaseAuth.getInstance()
+        listener = FirebaseAuth.AuthStateListener { p0 ->
+            val user = p0.currentUser
+        providers = arrayListOf(
+            AuthUI.IdpConfig.GoogleBuilder().build(),
+            AuthUI.IdpConfig.PhoneBuilder().build()
+        )
+
+        val otherBtn = view?.findViewById<Button>(R.id.otherBtn)
+        otherBtn?.setOnClickListener {
+
+            val intent = Intent(this.context, MainActivity::class.java)
+            if (user != null) {
+                startActivity(intent)
+            } else {
+                    startActivityForResult(
+                        AuthUI.getInstance()
+                            .createSignInIntentBuilder()
+                            .setAvailableProviders(providers)
+                            .setAlwaysShowSignInMethodScreen(true)
+                            .build(), AUTH_REQUEST_CODE
+                    )
+
+                }
+
+            }
+
+            val enterBtn = view?.findViewById<Button>(R.id.enterBtn)
+            enterBtn?.setOnClickListener {
+                view?.let { it1 -> existUser(it1) }
+            }
         }
+
     }
 
     override fun onCreateView(
@@ -45,34 +67,47 @@ class LoginFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
+    override fun onStart() {
+        super.onStart()
+        firebaseAuth.addAuthStateListener(listener)
+
+    }
+
+    override fun onStop() {
+        if (listener != null)
+            firebaseAuth.removeAuthStateListener(listener)
+        super.onStop()
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val enterBtn = view.findViewById<Button>(R.id.enterBtn)
-       enterBtn.setOnClickListener {
-            if(existUser(view)){
-                val intento1  = Intent(this.context, MainActivity::class.java)
-                startActivity(intento1)
-            }
-        }
+
+
+
     }
 
-    fun existUser(view: View):Boolean{
-        val user = view.findViewById<EditText>(R.id.usernameEt).text.toString()
+
+    fun existUser(view: View) {
+        val email = view.findViewById<EditText>(R.id.emailEt).text.toString()
         val pass = view.findViewById<EditText>(R.id.passwordEt).text.toString()
-        val usuario :Usuario? = ListaUsuarios.getUser(user)
-        if(usuario != null){
-            if(usuario.password == pass){
-                return true
-            }
-            showAlert("Contraseña incorrecta", "Vuelve a ingresar la contraseña...")
-        }
-        else{
-            showAlert("Usuario incorrecto", "No existe el usuario "+user)
-        }
-        return false
-    }
 
+        if (email != null && email != "" &&  pass != null &&  pass != "") {
+            firebaseAuth.signInWithEmailAndPassword(email, pass)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        val intento1 = Intent(this.context, MainActivity::class.java)
+                        startActivity(intento1)
+
+                    } else {
+                        showAlert("Fracaso en el logueo", "Vuelva a intentarlo")
+                    }
+                }
+
+        }else{
+            showAlert("Faltan datos", "Ingrese email y/o contraseña")
+        }
+    }
     fun showAlert(alert:String, message:String){
         val builder: AlertDialog.Builder? = activity?.let {
             AlertDialog.Builder(it)
@@ -82,23 +117,5 @@ class LoginFragment : Fragment() {
         builder?.show()
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LoginFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }
