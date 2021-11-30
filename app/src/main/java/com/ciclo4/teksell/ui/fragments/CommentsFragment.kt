@@ -6,14 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ciclo4.teksell.R
 import com.ciclo4.teksell.adapter.CommentAdapter
 import com.ciclo4.teksell.model.Comment
-import com.ciclo4.teksell.model.ListaUsuarios
-import com.ciclo4.teksell.model.Productos
 import com.google.android.material.textfield.TextInputEditText
 
 // TODO: Rename parameter arguments, choose names that match

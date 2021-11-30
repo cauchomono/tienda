@@ -58,7 +58,7 @@ class OrderFragment : Fragment() {
         val price = view.findViewById<TextView>(R.id.tvPrice)
         val car = view.findViewById<TextView>(R.id.tvCaracteristica)
         car.text = producto.caracteristicas
-        Picasso.get().load(producto.image).into(image)
+        Picasso.get().load(producto.imagen).into(image)
         name.text = (producto.marca+": "+producto.modelo)
         price.text = ("$" + producto.precio)
     }

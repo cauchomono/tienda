@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/usernameEt"
+        android:id="@+id/emailEt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
@@ -42,7 +42,7 @@
         android:foregroundGravity="center"
         android:gravity="center"
         android:layout_gravity="center"
-        android:hint="@string/usernameStr"
+        android:hint="@string/emailStr"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/enterBtn"
@@ -77,6 +77,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/otherBtn"
+            android:layout_width="134dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="100dp"
+            android:text=" Usar Otro método"
+            android:textColor="#263238"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
     </LinearLayout>
     </ScrollView>
