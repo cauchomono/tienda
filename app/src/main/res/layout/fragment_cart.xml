@@ -78,6 +78,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:gravity="center"
+            android:textColor="@color/primaryTextColor"
             android:text="Comprar productos" />
 
     </LinearLayout>

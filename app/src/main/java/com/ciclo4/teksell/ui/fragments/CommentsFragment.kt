@@ -53,7 +53,7 @@ class ComentsFragment : Fragment() {
     }
 
     var comments = mutableListOf(
-        Comment("AresAce", "Sebastian Acevedo", "Muy buena app"),
+        Comment("AresAce", "Sebastian Acevedoooooooooooooo y mas texto   dsadasads", "Muy buena app"),
         Comment("root", "Administrador", "Aplicacion en progreso")
     )
 
