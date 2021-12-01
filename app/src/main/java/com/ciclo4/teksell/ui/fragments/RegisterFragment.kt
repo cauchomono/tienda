@@ -66,10 +66,10 @@ class RegisterFragment : Fragment() {
             showAlert("Email", "El formato del correo electronico no coincide")
             return false
         }
-//        if(ListaUsuarios.isUser(user)){
-//            showAlert("Usuario", "El nombre de usuario ya existe")
-//            return false
-//        }
+        if(pass1.length < 6){
+            showAlert("Contraseña", "Contraseña muy corta")
+            return false
+        }
 
         var userRegistered = hashMapOf(
             "name" to name,

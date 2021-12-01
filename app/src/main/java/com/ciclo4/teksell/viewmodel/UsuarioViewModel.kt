@@ -30,7 +30,17 @@ class UsuarioViewModel: ViewModel() {
          })
      }
 
+    fun updateUserInFirebase(map: Map<String,Any>){
+        firestoreService.updateUserDetail(object : Callback<Usuarios>{
+            override fun OnSuccess(result: Usuarios?) {
+                proccessFinished()
+            }
+            override fun OnFailed(exception: Exception) {
+                proccessFinished()
+            }
+        }, map)
 
+    }
 
     fun proccessFinished() {
         isLoading.value = true

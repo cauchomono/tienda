@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.ciclo4.teksell.R
 import com.ciclo4.teksell.model.Usuarios
 import com.ciclo4.teksell.network.FirestoreService
@@ -57,9 +58,10 @@ class AdminFragment : Fragment() {
 
 
         observeViewModel()
-
-
-
+        val editBtn = view.findViewById<Button>(R.id.editBtn)
+        editBtn.setOnClickListener {
+            findNavController().navigate(R.id.adminDetailFragmentDialog)
+        }
 
         val exitBtn = view.findViewById<Button>(R.id.exitBtn)
 
