@@ -2,13 +2,13 @@ package com.ciclo4.teksell.model
 
 import java.io.Serializable
 
-class Usuario(): Serializable {
+class Usuarios(): Serializable {
 
     lateinit var name: String
     lateinit var username: String
     lateinit var email: String
     lateinit var address: String
-    lateinit var phone : String
+    lateinit var contact : String
     lateinit var profilePhoto : String
 }
 
