@@ -30,21 +30,21 @@ class LoginFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val intent = Intent(this.context, MainActivity::class.java)
         firebaseAuth = FirebaseAuth.getInstance()
         listener = FirebaseAuth.AuthStateListener { p0 ->
             val user = p0.currentUser
+
         providers = arrayListOf(
             AuthUI.IdpConfig.GoogleBuilder().build(),
             AuthUI.IdpConfig.PhoneBuilder().build()
         )
-
+            if (user != null) {
+                startActivity(intent)
+            }else{
         val otherBtn = view?.findViewById<Button>(R.id.otherBtn)
         otherBtn?.setOnClickListener {
 
-            val intent = Intent(this.context, MainActivity::class.java)
-            if (user != null) {
-                startActivity(intent)
-            } else {
                     startActivityForResult(
                         AuthUI.getInstance()
                             .createSignInIntentBuilder()
@@ -52,8 +52,6 @@ class LoginFragment : Fragment() {
                             .setAlwaysShowSignInMethodScreen(true)
                             .build(), AUTH_REQUEST_CODE
                     )
-
-                }
 
             }
 
@@ -63,7 +61,7 @@ class LoginFragment : Fragment() {
 
 
             }
-        }
+        }}
 
     }
 

@@ -47,8 +47,12 @@ class AdminDetailDialogFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val btnAdmin = view?.findViewById<Button>(R.id.btnAdmin)
+
+        val idPhotoAdmin = view?.findViewById<ImageButton>(R.id.idPhotoAdmin)
+
+
         btnAdmin?.setOnClickListener {
-            val idPhotoAdmin = view?.findViewById<ImageButton>(R.id.idPhotoAdmin)
+
             val etNombreAdmin = view?.findViewById<EditText>(R.id.etNombreAdmin)
             val etDireccionAdmin = view?.findViewById<EditText>(R.id.etDireccionAdmin)
             val etTelefonoAdmin = view?.findViewById<EditText>(R.id.etTelefonoAdmin)
