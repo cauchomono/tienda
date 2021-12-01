@@ -89,6 +89,11 @@ class LoginFragment : Fragment() {
 
 
     fun existUser(view: View) {
+        if(NODATA){
+            loginWithoutData()
+            return
+        }
+
         val email = view.findViewById<EditText>(R.id.emailEt).text.toString()
         val pass = view.findViewById<EditText>(R.id.passwordEt).text.toString()
 
@@ -117,5 +122,10 @@ class LoginFragment : Fragment() {
         builder?.show()
     }
 
+    val NODATA = false
+    fun loginWithoutData(){
+        val intento1 = Intent(this.context, MainActivity::class.java)
+        startActivity(intento1)
+    }
 
 }
