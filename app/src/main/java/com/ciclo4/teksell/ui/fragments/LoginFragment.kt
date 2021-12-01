@@ -130,7 +130,7 @@ class LoginFragment : Fragment() {
         builder?.show()
     }
 
-    val NODATA = false
+    val NODATA = true
     fun loginWithoutData(){
         val intento1 = Intent(this.context, MainActivity::class.java)
         startActivity(intento1)
