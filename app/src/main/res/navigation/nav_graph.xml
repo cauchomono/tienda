@@ -67,9 +67,14 @@
         tools:layout="@layout/fragment_order_detail_dialog"/>
 
 
-    <dialog
+    <fragment
         android:id="@+id/adminDetailFragmentDialog"
         android:name="com.ciclo4.teksell.ui.fragments.AdminDetailDialogFragment"
         android:label="AdminDetailFragmentDialog"
-        tools:layout="@layout/fragment_admin_detail_dialog"/>
+        tools:layout="@layout/fragment_admin_detail_dialog">
+        <action
+            android:id="@+id/action_adminDetailFragmentDialog_to_navAdminFragment"
+            app:destination="@id/navAdminFragment" />
+    </fragment>
+
 </navigation>

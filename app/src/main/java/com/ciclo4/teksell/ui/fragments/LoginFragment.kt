@@ -9,8 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.core.os.bundleOf
+import androidx.lifecycle.ViewModelProvider
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.model.Usuarios
 import com.ciclo4.teksell.ui.activities.MainActivity
+import com.ciclo4.teksell.viewmodel.UsuarioViewModel
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 
@@ -22,23 +26,25 @@ class LoginFragment : Fragment() {
     lateinit var listener: FirebaseAuth.AuthStateListener
     lateinit var providers: List<AuthUI.IdpConfig>
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val intent = Intent(this.context, MainActivity::class.java)
         firebaseAuth = FirebaseAuth.getInstance()
         listener = FirebaseAuth.AuthStateListener { p0 ->
             val user = p0.currentUser
+
         providers = arrayListOf(
             AuthUI.IdpConfig.GoogleBuilder().build(),
             AuthUI.IdpConfig.PhoneBuilder().build()
         )
-
+            if (user != null) {
+                startActivity(intent)
+            }else{
         val otherBtn = view?.findViewById<Button>(R.id.otherBtn)
         otherBtn?.setOnClickListener {
 
-            val intent = Intent(this.context, MainActivity::class.java)
-            if (user != null) {
-                startActivity(intent)
-            } else {
                     startActivityForResult(
                         AuthUI.getInstance()
                             .createSignInIntentBuilder()
@@ -47,15 +53,15 @@ class LoginFragment : Fragment() {
                             .build(), AUTH_REQUEST_CODE
                     )
 
-                }
-
             }
 
             val enterBtn = view?.findViewById<Button>(R.id.enterBtn)
             enterBtn?.setOnClickListener {
                 view?.let { it1 -> existUser(it1) }
+
+
             }
-        }
+        }}
 
     }
 
@@ -101,7 +107,9 @@ class LoginFragment : Fragment() {
             firebaseAuth.signInWithEmailAndPassword(email, pass)
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
+
                         val intento1 = Intent(this.context, MainActivity::class.java)
+
                         startActivity(intento1)
 
                     } else {
