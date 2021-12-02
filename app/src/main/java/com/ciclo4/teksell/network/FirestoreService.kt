@@ -96,6 +96,12 @@ class FirestoreService {
         }
     }
 
+//    fun uploadComments(callback: Callback<Comment>, map: Map<String,Any>){
+//        userDb.collection("comentarios").document(userEmail).set()
+//            .addOnCompleteListener {
+//            }
+//    }
+
 
 }
 

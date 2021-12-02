@@ -22,8 +22,8 @@ import com.google.android.material.textfield.TextInputEditText
 
 class ComentsFragment : Fragment(), CommentsListener {
 
-    private lateinit var commentAdapter: CommentAdapter
-    private lateinit var commentViewModel: CommentViewModel
+//    private lateinit var commentAdapter: CommentAdapter
+//    private lateinit var commentViewModel: CommentViewModel
 
 
     override fun onCreateView(
@@ -41,27 +41,27 @@ class ComentsFragment : Fragment(), CommentsListener {
         super.onViewCreated(view, savedInstanceState)
 
         val btnComentar = view.findViewById<Button>(R.id.buttonComentar)
+//
+//        commentViewModel = ViewModelProvider(this).get(CommentViewModel::class.java)
+//        commentViewModel.getCommentsFromFirebase()
+//
+//        commentAdapter = CommentAdapter(this)
+//
+//        val  rvComment: RecyclerView = view.findViewById(R.id.rvComments)
 
-        commentViewModel = ViewModelProvider(this).get(CommentViewModel::class.java)
-        commentViewModel.getCommentsFromFirebase()
+//        rvComment.apply{
+//            layoutManager = LinearLayoutManager(view.context)
+//            adapter = commentAdapter
+//        }
+//
+//        observeViewModel()
+//    }
 
-        commentAdapter = CommentAdapter(this)
-
-        val  rvComment: RecyclerView = view.findViewById(R.id.rvComments)
-
-        rvComment.apply{
-            layoutManager = LinearLayoutManager(view.context)
-            adapter = commentAdapter
-        }
-
-        observeViewModel()
-    }
-
-    fun observeViewModel(){
-        commentViewModel.listComments.observe(viewLifecycleOwner, Observer<List<Comment>> {
-            comments ->
-            commentAdapter.updateData(comments)
-        })
+//    fun observeViewModel(){
+//        commentViewModel.listComments.observe(viewLifecycleOwner, Observer<List<Comment>> {
+//            comments ->
+//            commentAdapter.updateData(comments)
+//        })
     }
 
 
