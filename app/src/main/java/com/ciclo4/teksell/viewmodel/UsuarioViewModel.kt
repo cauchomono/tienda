@@ -18,6 +18,30 @@ class UsuarioViewModel: ViewModel() {
         getUserFromFirebase()
     }
 
+    fun createUserFirebaseFromProviders(){
+        firestoreService.newUserFromProviders(object : Callback<Usuarios> {
+            override fun OnSuccess(result: Usuarios?) {
+                proccessFinished()
+            }
+
+            override fun OnFailed(exception: Exception) {
+                proccessFinished()
+            }
+        })
+    }
+
+    fun createUserFirebase(map: Map<String,Any> , email :  String){
+        firestoreService.newUser(object : Callback<Usuarios> {
+            override fun OnSuccess(result: Usuarios?) {
+                proccessFinished()
+            }
+
+            override fun OnFailed(exception: Exception) {
+                proccessFinished()
+            }
+        }, map, email)
+    }
+
      fun getUserFromFirebase() {
          firestoreService.getUsersDetail(object : Callback<Usuarios> {
              override fun OnSuccess(result: Usuarios?) {

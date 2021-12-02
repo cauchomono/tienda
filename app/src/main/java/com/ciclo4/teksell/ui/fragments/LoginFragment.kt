@@ -3,6 +3,8 @@ package com.ciclo4.teksell.ui.fragments
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,9 +19,13 @@ import com.ciclo4.teksell.ui.activities.MainActivity
 import com.ciclo4.teksell.viewmodel.UsuarioViewModel
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
+import com.google.longrunning.WaitOperationRequest
+import kotlinx.coroutines.android.awaitFrame
 
 
 class LoginFragment : Fragment() {
+
+    private lateinit var usuarioViewModel  : UsuarioViewModel
 
     val AUTH_REQUEST_CODE = 1234
     lateinit var firebaseAuth: FirebaseAuth
@@ -31,6 +37,7 @@ class LoginFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val intent = Intent(this.context, MainActivity::class.java)
+        usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
         firebaseAuth = FirebaseAuth.getInstance()
         listener = FirebaseAuth.AuthStateListener { p0 ->
             val user = p0.currentUser
@@ -38,6 +45,7 @@ class LoginFragment : Fragment() {
         providers = arrayListOf(
             AuthUI.IdpConfig.GoogleBuilder().build(),
         )
+
             if (user != null) {
                 startActivity(intent)
             }else{
@@ -50,6 +58,7 @@ class LoginFragment : Fragment() {
                             .setAlwaysShowSignInMethodScreen(true)
                             .build(), AUTH_REQUEST_CODE
                     )
+
             }
 
             val enterBtn = view?.findViewById<Button>(R.id.enterBtn)
@@ -89,10 +98,10 @@ class LoginFragment : Fragment() {
 
 
     fun existUser(view: View) {
-        if(NODATA){
-            loginWithoutData()
-            return
-        }
+//        if(NODATA){
+//            loginWithoutData()
+//            return
+//        }
 
         val email = view.findViewById<EditText>(R.id.emailEt).text.toString()
         val pass = view.findViewById<EditText>(R.id.passwordEt).text.toString()
@@ -124,10 +133,10 @@ class LoginFragment : Fragment() {
         builder?.show()
     }
 
-    val NODATA = true
-    fun loginWithoutData(){
-        val intento1 = Intent(this.context, MainActivity::class.java)
-        startActivity(intento1)
-    }
+//    val NODATA = true
+//    fun loginWithoutData(){
+//        val intento1 = Intent(this.context, MainActivity::class.java)
+//        startActivity(intento1)
+//    }
 
 }

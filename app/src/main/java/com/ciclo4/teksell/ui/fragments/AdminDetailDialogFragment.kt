@@ -38,7 +38,6 @@ class AdminDetailDialogFragment : Fragment() {
         usuarioViewModel.updatePhotoProfile(uri)
 
 
-
     }
 
 
@@ -69,7 +68,6 @@ class AdminDetailDialogFragment : Fragment() {
         val idPhotoAdmin = view?.findViewById<ImageButton>(R.id.idPhotoAdmin)
 
         firestoreService.profilePhoto.downloadUrl.addOnSuccessListener {
-
             Picasso.get().load(it).into(idPhotoAdmin)
 
         }.addOnFailureListener {

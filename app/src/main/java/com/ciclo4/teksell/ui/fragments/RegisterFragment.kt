@@ -8,12 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.viewmodel.UsuarioViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterFragment : Fragment() {
+    private lateinit var usuarioViewModel  : UsuarioViewModel
 
     private val userDb =  FirebaseFirestore.getInstance()
     //override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +45,7 @@ class RegisterFragment : Fragment() {
     }
 
     fun addUser(view: View):Boolean{
+        usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
 
         val name = view.findViewById<EditText>(R.id.newNamesEt).text.toString()
         val user = view.findViewById<EditText>(R.id.newUsernameEt).text.toString()
@@ -78,11 +82,8 @@ class RegisterFragment : Fragment() {
             "address" to address,
             "contact" to contact)
 
+        usuarioViewModel.createUserFirebase(userRegistered,email)
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,pass1)
-        userDb.collection("users").document(email).set(
-            userRegistered
-        )
-
         return true
 
     }

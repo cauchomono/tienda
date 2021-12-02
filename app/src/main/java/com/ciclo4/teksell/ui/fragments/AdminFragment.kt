@@ -5,8 +5,10 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
 import android.media.Image
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -42,19 +44,22 @@ class AdminFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val firestoreService = FirestoreService()
-
+        val uri = Uri.parse("android.resource://com.ciclo4.teksell/" + R.drawable.logo)
+        val profileVi = view?.findViewById<ImageView>(R.id.profileVi)
+        profileVi?.setImageURI(uri)
 
 
         firestoreService.profilePhoto.downloadUrl.addOnSuccessListener {
             val profileVi = view?.findViewById<ImageView>(R.id.profileVi)
-            val imageLink = it.toString()
+
             Picasso.get().load(it).into(profileVi)
 
 
-
-
         }.addOnFailureListener {
+
+
             Toast.makeText(this.context,"No se pudo cargar la imagen", Toast.LENGTH_LONG).show()
+
         }
 
 
@@ -80,7 +85,7 @@ class AdminFragment : Fragment() {
 
 
         usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
-        usuarioViewModel.refresh()
+        usuarioViewModel.getUserFromFirebase()
 
 
         observeViewModel()

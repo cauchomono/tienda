@@ -9,6 +9,6 @@ class Usuarios(): Serializable {
     lateinit var email: String
     lateinit var address: String
     lateinit var contact : String
-    lateinit var profilePhoto : String
+
 }
 

@@ -2,6 +2,7 @@ package com.ciclo4.teksell.network
 
 import android.app.Activity
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import com.ciclo4.teksell.model.Usuarios
 import com.ciclo4.teksell.ui.fragments.AdminDetailDialogFragment
@@ -12,6 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import java.io.File
 
 class FirestoreService {
 
@@ -26,6 +28,31 @@ class FirestoreService {
     val userPath = storageRef.child("${userEmail}")
     val profilePhoto = storageRef.child("${userEmail}/profilePhoto.jpg")
 
+
+    fun newUserFromProviders(callback: Callback<Usuarios>){
+        var userRegistered = hashMapOf(
+            "name" to "Sin nombre",
+            "user" to "Sin usuario",
+            "email" to userEmail,
+            "address" to "sin dirección",
+            "contact" to "Sin número celular")
+
+        newUser(callback, userRegistered, userEmail)
+
+    }
+
+
+    fun newUser(callback: Callback<Usuarios>, map: Map<String,Any>, newUserEmail : String){
+        userDb.collection("users").document(newUserEmail).set(map)
+
+        val uri = Uri.fromFile(File("app/src/main/res/drawable-v24/logo.jpg"))
+        storageRef.child("${newUserEmail}/profilePhoto.jpg").putFile(uri)
+
+
+
+
+
+    }
 
     fun getUsersDetail(callback: Callback<Usuarios>) {
           userDb.collection("users").document(userEmail).get()
