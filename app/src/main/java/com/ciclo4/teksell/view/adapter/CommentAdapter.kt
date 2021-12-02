@@ -19,23 +19,23 @@ class CommentAdapter (val commentsListener: CommentsListener):RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: CommentAdapter.CommentHolder, position: Int) {
-//        val comment = listComments[position]
-//        holder.tvUser.text = (comment.username + ":"+ comment.name)
-//        holder.tvComm.text = comment.comment
+        val comment = listComments[position]
+        holder.tvUser.text = (comment.email + ":")
+        holder.tvComm.text = comment.comment
     }
 
     override fun getItemCount(): Int =  listComments.size
 
     fun updateData(data: List<Comment>) {
-//        listComments.clear()
-//        listComments.addAll(data)
-//        notifyDataSetChanged()
+        listComments.clear()
+        listComments.addAll(data)
+        notifyDataSetChanged()
     }
 
     class CommentHolder(val view:View):RecyclerView.ViewHolder(view){
 
-//        val tvUser : TextView = view.findViewById(R.id.tvUser)
-//        val tvComm : TextView = view.findViewById(R.id.tvComment)
+        val tvUser : TextView = view.findViewById(R.id.tvUser)
+        val tvComm : TextView = view.findViewById(R.id.tvComment)
 
 
     }

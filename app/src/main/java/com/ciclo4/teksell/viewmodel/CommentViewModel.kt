@@ -27,6 +27,17 @@ class CommentViewModel: ViewModel() {
         })
     }
 
+    fun postCommentsFirebse(map : Map<String,String>){
+        firestoreService.uploadComments(object : Callback<Comment>{
+            override fun OnSuccess(result: Comment?) {
+                proccessFinished()
+            }
+            override fun OnFailed(exception: Exception) {
+                proccessFinished()
+            }
+        },map)
+    }
+
     fun proccessFinished() {
         isLoading.value = true
     }

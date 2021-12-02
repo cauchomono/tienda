@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,7 @@ import com.ciclo4.teksell.R
 import com.ciclo4.teksell.view.adapter.CommentAdapter
 import com.ciclo4.teksell.model.Comment
 import com.ciclo4.teksell.model.Productos
+import com.ciclo4.teksell.network.FirestoreService
 import com.ciclo4.teksell.view.adapter.CommentsListener
 import com.ciclo4.teksell.viewmodel.CommentViewModel
 import com.google.android.material.textfield.TextInputEditText
@@ -22,8 +24,8 @@ import com.google.android.material.textfield.TextInputEditText
 
 class ComentsFragment : Fragment(), CommentsListener {
 
-//    private lateinit var commentAdapter: CommentAdapter
-//    private lateinit var commentViewModel: CommentViewModel
+    private lateinit var commentAdapter: CommentAdapter
+    private lateinit var commentViewModel: CommentViewModel
 
 
     override fun onCreateView(
@@ -40,28 +42,44 @@ class ComentsFragment : Fragment(), CommentsListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val firestoreService = FirestoreService()
+
+        commentViewModel = ViewModelProvider(this).get(CommentViewModel::class.java)
+        commentViewModel.getCommentsFromFirebase()
+
+        commentAdapter = CommentAdapter(this)
+
+
+        val  rvComment: RecyclerView = view.findViewById(R.id.rvComments)
+
+        rvComment.apply{
+            layoutManager = LinearLayoutManager(view.context)
+            adapter = commentAdapter
+        }
+
+
         val btnComentar = view.findViewById<Button>(R.id.buttonComentar)
-//
-//        commentViewModel = ViewModelProvider(this).get(CommentViewModel::class.java)
-//        commentViewModel.getCommentsFromFirebase()
-//
-//        commentAdapter = CommentAdapter(this)
-//
-//        val  rvComment: RecyclerView = view.findViewById(R.id.rvComments)
 
-//        rvComment.apply{
-//            layoutManager = LinearLayoutManager(view.context)
-//            adapter = commentAdapter
-//        }
-//
-//        observeViewModel()
-//    }
+        var email : String = firestoreService.userEmail.toString()
 
-//    fun observeViewModel(){
-//        commentViewModel.listComments.observe(viewLifecycleOwner, Observer<List<Comment>> {
-//            comments ->
-//            commentAdapter.updateData(comments)
-//        })
+
+            btnComentar.setOnClickListener {
+                var comment = view.findViewById<EditText>(R.id.txtInput).text.toString()
+            var map = hashMapOf<String,String>(
+                "email" to email,
+                "comment" to comment,
+            )
+
+            commentViewModel.postCommentsFirebse(map)
+        }
+        observeViewModel()
+    }
+
+    fun observeViewModel(){
+        commentViewModel.listComments.observe(viewLifecycleOwner, Observer<List<Comment>> {
+            comments ->
+            commentAdapter.updateData(comments)
+        })
     }
 
 

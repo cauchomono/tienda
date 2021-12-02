@@ -20,9 +20,9 @@ import java.io.File
 class FirestoreService {
 
 
-    private val userDb =  FirebaseFirestore.getInstance()
-    private val user = FirebaseAuth.getInstance().currentUser
-    private val userEmail = user?.email.toString()
+     val userDb =  FirebaseFirestore.getInstance()
+     val user = FirebaseAuth.getInstance().currentUser
+     val userEmail = user?.email.toString()
 
     val storage = Firebase.storage
     val storageRef = storage.reference
@@ -85,22 +85,22 @@ class FirestoreService {
             }
     }
 
-//    fun getComments(callback: Callback<List<Comment>>){
-//        userDb.collection("comentarios").get().addOnSuccessListener { result ->
-//            for(doc in result){
-//                val list = result.toObjects(Comment::class.java)
-//                callback.OnSuccess(list)
-//                break
-//            }
-//
-//        }
-//    }
+    fun getComments(callback: Callback<List<Comment>>){
+        userDb.collection("comentarios").get().addOnSuccessListener { result ->
+            for(doc in result){
+                val list = result.toObjects(Comment::class.java)
+                callback.OnSuccess(list)
+                break
+            }
 
-//    fun uploadComments(callback: Callback<Comment>, map: Map<String,Any>){
-//        userDb.collection("comentarios").document(userEmail).set()
-//            .addOnCompleteListener {
-//            }
-//    }
+        }
+    }
+
+    fun uploadComments(callback: Callback<Comment>, map: Map<String,Any>){
+        userDb.collection("comentarios").document(userEmail).set(map).addOnSuccessListener {
+
+        }
+    }
 
 
 }
