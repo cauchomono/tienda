@@ -4,6 +4,7 @@ import android.app.Activity
 import android.net.Uri
 import android.util.Log
 import android.widget.Toast
+import com.ciclo4.teksell.model.Comment
 import com.ciclo4.teksell.model.Productos
 import com.ciclo4.teksell.model.Usuarios
 import com.ciclo4.teksell.ui.fragments.AdminDetailDialogFragment
@@ -82,6 +83,17 @@ class FirestoreService {
                     break
                 }
             }
+    }
+
+    fun getComments(callback: Callback<List<Comment>>){
+        userDb.collection("comentarios").get().addOnSuccessListener { result ->
+            for(doc in result){
+                val list = result.toObjects(Comment::class.java)
+                callback.OnSuccess(list)
+                break
+            }
+
+        }
     }
 
 

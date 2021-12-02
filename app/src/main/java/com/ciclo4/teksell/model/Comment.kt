@@ -1,9 +1,11 @@
 package com.ciclo4.teksell.model
 
-data class Comment(
+import java.io.Serializable
 
-    val username:String,
-    val name:String,
-    val comment: String
+class Comment : Serializable{
+   lateinit var username: String
+    lateinit var name: String
+     lateinit var email: String
+   lateinit var comment: String
 
-)
+}

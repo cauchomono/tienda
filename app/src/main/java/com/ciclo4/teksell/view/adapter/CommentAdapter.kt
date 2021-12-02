@@ -9,7 +9,9 @@ import com.ciclo4.teksell.R
 import com.ciclo4.teksell.model.Comment
 
 
-class CommentAdapter (val comments:List<Comment>):RecyclerView.Adapter<CommentAdapter.CommentHolder>(){
+class CommentAdapter (val commentsListener: CommentsListener):RecyclerView.Adapter<CommentAdapter.CommentHolder>(){
+
+    var listComments = ArrayList<Comment>()
 
     override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): CommentAdapter.CommentHolder {
         val layout = LayoutInflater.from(parent.context)
@@ -17,20 +19,24 @@ class CommentAdapter (val comments:List<Comment>):RecyclerView.Adapter<CommentAd
     }
 
     override fun onBindViewHolder(holder: CommentAdapter.CommentHolder, position: Int) {
-        holder.render(comments[position])
+        val comment = listComments[position]
+        holder.tvUser.text = (comment.username + ":"+ comment.name)
+        holder.tvComm.text = comment.comment
     }
 
-    override fun getItemCount(): Int =  comments.size
+    override fun getItemCount(): Int =  listComments.size
+
+    fun updateData(data: List<Comment>) {
+        listComments.clear()
+        listComments.addAll(data)
+        notifyDataSetChanged()
+    }
 
     class CommentHolder(val view:View):RecyclerView.ViewHolder(view){
 
         val tvUser : TextView = view.findViewById(R.id.tvUser)
         val tvComm : TextView = view.findViewById(R.id.tvComment)
 
-        fun render(comment:Comment){
-            tvUser.text = (comment.username + ":"+comment.name)
-            tvComm.text = comment.comment
-        }
 
     }
 

@@ -39,7 +39,7 @@ class HomeFragment : Fragment(), ProductsListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        productosViewModel =ViewModelProvider(this).get(ProductosViewModel::class.java)
+        productosViewModel = ViewModelProvider(this).get(ProductosViewModel::class.java)
         productosViewModel.getProductsFromFirebase()
 
 
