@@ -3,21 +3,26 @@ package com.ciclo4.teksell.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ciclo4.teksell.model.Comment
-import com.ciclo4.teksell.model.Productos
+import com.ciclo4.teksell.model.Usuarios
 import com.ciclo4.teksell.network.Callback
 import com.ciclo4.teksell.network.FirestoreService
 import java.lang.Exception
 
 class CommentViewModel: ViewModel() {
-
-    var isLoading = MutableLiveData<Boolean>()
     val firestoreService = FirestoreService()
-    var listComments = MutableLiveData<List<Comment>>()
+    var comments :MutableLiveData<List<Comment>> = MutableLiveData()
+    var isLoading = MutableLiveData<Boolean>()
 
-    fun getCommentsFromFirebase(){
+
+    fun refresh(){
+        getCommentFromFirebase()
+    }
+
+    fun getCommentFromFirebase() {
         firestoreService.getComments(object : Callback<List<Comment>> {
             override fun OnSuccess(result: List<Comment>?) {
-                listComments.postValue(result!!)
+                comments.postValue(result!!)
+                println("Resultados:" + comments)
                 proccessFinished()
             }
 
@@ -25,17 +30,6 @@ class CommentViewModel: ViewModel() {
                 proccessFinished()
             }
         })
-    }
-
-    fun postCommentsFirebse(map : Map<String,String>){
-        firestoreService.uploadComments(object : Callback<Comment>{
-            override fun OnSuccess(result: Comment?) {
-                proccessFinished()
-            }
-            override fun OnFailed(exception: Exception) {
-                proccessFinished()
-            }
-        },map)
     }
 
     fun proccessFinished() {

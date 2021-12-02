@@ -85,21 +85,29 @@ class FirestoreService {
             }
     }
 
-    fun getComments(callback: Callback<List<Comment>>){
-        userDb.collection("comentarios").get().addOnSuccessListener { result ->
-            for(doc in result){
-                val list = result.toObjects(Comment::class.java)
-                callback.OnSuccess(list)
-                break
-            }
-
-        }
-    }
-
     fun uploadComments(callback: Callback<Comment>, map: Map<String,Any>){
         userDb.collection("comentarios").document(userEmail).set(map).addOnSuccessListener {
 
         }
+    }
+
+    fun getComments(callback: Callback<List<Comment>>) {
+        userDb.collection("comments")
+            .orderBy("score")
+            .get()
+            .addOnSuccessListener { result->
+                for (doc in result){
+                    val list = result.toObjects(Comment::class.java)
+                    callback.OnSuccess(list)
+                    break
+                }
+            }
+    }
+
+    fun addMessage(comment: Comment){
+
+        userDb.collection("comments").add(comment)
+
     }
 
 
