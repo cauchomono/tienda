@@ -28,7 +28,7 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginTop="50dp"
                 android:text="Login"
-                android:textColor="#263238" />
+                android:textColor="@color/primaryTextColor" />
 
             <Button
                 android:id="@+id/registerBtn"
@@ -37,7 +37,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:text="Register"
-                android:textColor="#263238" />
+                android:textColor="@color/primaryTextColor" />
 
 
 

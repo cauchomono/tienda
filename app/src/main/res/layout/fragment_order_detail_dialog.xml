@@ -16,12 +16,14 @@
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/primaryColor">
+            android:background="@color/colorPrimary">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/secondaryDarkColor"
+                app:titleTextColor="@color/primaryTextColor"
                 android:gravity="center"
                 app:title="Detalle del producto"
                 app:titleMargin="5dp" />
