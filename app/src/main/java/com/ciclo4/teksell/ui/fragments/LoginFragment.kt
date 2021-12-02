@@ -59,6 +59,8 @@ class LoginFragment : Fragment() {
                             .build(), AUTH_REQUEST_CODE
                     )
 
+            startActivity(intent)
+
             }
 
             val enterBtn = view?.findViewById<Button>(R.id.enterBtn)

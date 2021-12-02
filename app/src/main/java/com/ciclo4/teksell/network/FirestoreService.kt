@@ -49,9 +49,6 @@ class FirestoreService {
         storageRef.child("${newUserEmail}/profilePhoto.jpg").putFile(uri)
 
 
-
-
-
     }
 
     fun getUsersDetail(callback: Callback<Usuarios>) {
