@@ -59,7 +59,6 @@ class LoginFragment : Fragment() {
                             .build(), AUTH_REQUEST_CODE
                     )
 
-            startActivity(intent)
 
             }
 

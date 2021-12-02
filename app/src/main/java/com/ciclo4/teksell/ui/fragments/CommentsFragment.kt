@@ -9,7 +9,7 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ciclo4.teksell.R
-import com.ciclo4.teksell.adapter.CommentAdapter
+import com.ciclo4.teksell.view.adapter.CommentAdapter
 import com.ciclo4.teksell.model.Comment
 import com.google.android.material.textfield.TextInputEditText
 

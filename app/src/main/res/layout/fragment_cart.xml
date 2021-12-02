@@ -8,14 +8,6 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Agrega productos..."
-        android:textAlignment="center" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -43,6 +35,7 @@
                 android:layout_weight="1"
                 android:text="Carrito de compras"
                 android:textSize="28sp" />
+
         </LinearLayout>
 
         <ScrollView
@@ -57,29 +50,44 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvCart"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"/>
 
-                </androidx.recyclerview.widget.RecyclerView>
+                <TextView
+                    android:id="@+id/totalTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="Precio total:$"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/subtotalTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="Subtotal:$"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/valorIvaTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="Valor iva:$"
+                    android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:gravity="center"
+                    android:text="Comprar productos"
+                    android:textColor="@color/primaryTextColor" />
+
             </LinearLayout>
         </ScrollView>
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="Precio total:$"
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:gravity="center"
-            android:textColor="@color/primaryTextColor"
-            android:text="Comprar productos" />
 
     </LinearLayout>
     </ScrollView>

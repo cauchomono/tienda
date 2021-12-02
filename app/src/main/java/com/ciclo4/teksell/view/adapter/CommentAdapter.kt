@@ -1,4 +1,4 @@
-package com.ciclo4.teksell.adapter
+package com.ciclo4.teksell.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View

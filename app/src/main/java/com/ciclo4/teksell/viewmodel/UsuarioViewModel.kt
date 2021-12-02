@@ -3,6 +3,7 @@ package com.ciclo4.teksell.viewmodel
 import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ciclo4.teksell.model.Productos
 import com.ciclo4.teksell.model.Usuarios
 import com.ciclo4.teksell.network.Callback
 import com.ciclo4.teksell.network.FirestoreService
@@ -12,6 +13,7 @@ class UsuarioViewModel: ViewModel() {
     val firestoreService = FirestoreService()
     var usuarios = MutableLiveData<Usuarios>()
     var isLoading = MutableLiveData<Boolean>()
+
 
 
     fun refresh(){
@@ -77,6 +79,8 @@ class UsuarioViewModel: ViewModel() {
             }
         }, uri)
     }
+
+
 
     fun proccessFinished() {
         isLoading.value = true

@@ -22,6 +22,7 @@
             android:layout_marginTop="0dp" />
 
         <ProgressBar
+            android:id="@+id/loadingPb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true" />
