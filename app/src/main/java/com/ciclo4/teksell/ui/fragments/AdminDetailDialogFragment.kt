@@ -33,7 +33,7 @@ class AdminDetailDialogFragment : Fragment() {
 
     val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri ->
         val idPhotoAdmin = view?.findViewById<ImageButton>(R.id.idPhotoAdmin)
-
+        idPhotoAdmin?.setImageURI(uri)
         usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
         usuarioViewModel.updatePhotoProfile(uri)
 
