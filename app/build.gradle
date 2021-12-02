@@ -84,4 +84,7 @@ dependencies {
 
     //Google maps
     implementation 'com.google.android.gms:play-services-maps:18.0.0'
+
+    //Firebase Storage
+    implementation 'com.google.firebase:firebase-storage-ktx'
 }

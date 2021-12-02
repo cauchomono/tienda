@@ -1,6 +1,11 @@
 package com.ciclo4.teksell.ui.fragments
 
+import android.app.Activity
+import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,23 +14,34 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.network.FirestoreService
 import com.ciclo4.teksell.viewmodel.UsuarioViewModel
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+import com.squareup.picasso.Picasso
+import io.grpc.Context
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AdminDetailDialogFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AdminDetailDialogFragment : Fragment() {
+
+
     lateinit var usuarioViewModel: UsuarioViewModel
+
+    val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri ->
+        val idPhotoAdmin = view?.findViewById<ImageButton>(R.id.idPhotoAdmin)
+
+        usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
+        usuarioViewModel.updatePhotoProfile(uri)
+
+
+
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -46,10 +62,29 @@ class AdminDetailDialogFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btnAdmin = view?.findViewById<Button>(R.id.btnAdmin)
+
+
+        val firestoreService = FirestoreService()
 
         val idPhotoAdmin = view?.findViewById<ImageButton>(R.id.idPhotoAdmin)
 
+        firestoreService.profilePhoto.downloadUrl.addOnSuccessListener {
+
+            Picasso.get().load(it).into(idPhotoAdmin)
+
+        }.addOnFailureListener {
+            Toast.makeText(this.context,"No se pudo cargar la imagen",Toast.LENGTH_LONG).show()
+        }
+
+
+
+
+        idPhotoAdmin?.setOnClickListener {
+            val firestoreService = FirestoreService()
+            getContent.launch("image/*")
+
+        }
+        val btnAdmin = view?.findViewById<Button>(R.id.btnAdmin)
 
         btnAdmin?.setOnClickListener {
 
@@ -62,14 +97,19 @@ class AdminDetailDialogFragment : Fragment() {
             val settingsMap : Map<String,Any> = mapOf(
                 Pair("name",etNombreAdmin?.text.toString()),
                 Pair("contact",etTelefonoAdmin?.text.toString()),
-                Pair("address",etDireccionAdmin?.text.toString())
+                Pair("address",etDireccionAdmin?.text.toString()),
+
             )
+
+
 
             usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
             usuarioViewModel.updateUserInFirebase(settingsMap)
-            Toast.makeText(this.context,"Se Guardo",Toast.LENGTH_LONG).show()
+
             findNavController().navigate(R.id.navAdminFragment)
         }
 
+
     }
+
 }

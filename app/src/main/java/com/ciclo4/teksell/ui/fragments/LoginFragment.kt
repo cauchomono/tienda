@@ -37,14 +37,12 @@ class LoginFragment : Fragment() {
 
         providers = arrayListOf(
             AuthUI.IdpConfig.GoogleBuilder().build(),
-            AuthUI.IdpConfig.PhoneBuilder().build()
         )
             if (user != null) {
                 startActivity(intent)
             }else{
         val otherBtn = view?.findViewById<Button>(R.id.otherBtn)
         otherBtn?.setOnClickListener {
-
                     startActivityForResult(
                         AuthUI.getInstance()
                             .createSignInIntentBuilder()
@@ -52,14 +50,11 @@ class LoginFragment : Fragment() {
                             .setAlwaysShowSignInMethodScreen(true)
                             .build(), AUTH_REQUEST_CODE
                     )
-
             }
 
             val enterBtn = view?.findViewById<Button>(R.id.enterBtn)
             enterBtn?.setOnClickListener {
                 view?.let { it1 -> existUser(it1) }
-
-
             }
         }}
 
@@ -89,9 +84,8 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
     }
+
 
 
     fun existUser(view: View) {

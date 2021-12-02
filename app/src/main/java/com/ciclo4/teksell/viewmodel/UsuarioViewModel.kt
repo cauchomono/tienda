@@ -1,5 +1,6 @@
 package com.ciclo4.teksell.viewmodel
 
+import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ciclo4.teksell.model.Usuarios
@@ -40,6 +41,17 @@ class UsuarioViewModel: ViewModel() {
             }
         }, map)
 
+    }
+
+    fun updatePhotoProfile(uri: Uri){
+        firestoreService.updateProfilePhoto(object : Callback<Usuarios>{
+            override fun OnSuccess(result: Usuarios?) {
+                proccessFinished()
+            }
+            override fun OnFailed(exception: Exception) {
+                proccessFinished()
+            }
+        }, uri)
     }
 
     fun proccessFinished() {

@@ -22,7 +22,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="471dp">
+                    android:layout_height="575dp">
 
                     <Button
                         android:id="@+id/editBtn"
@@ -55,7 +55,7 @@
                         android:text="Nombre"
                         app:layout_constraintBottom_toTopOf="@+id/userDirectionVt"
                         app:layout_constraintStart_toStartOf="@+id/userDirectionVt"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+                        app:layout_constraintTop_toBottomOf="@+id/profileVi" />
 
                     <TextView
                         android:id="@+id/userEmailVt"
@@ -86,9 +86,9 @@
                         app:layout_constraintTop_toBottomOf="@+id/userNameVt" />
 
                     <ImageView
-                        android:id="@+id/imageView9"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/profileVi"
+                        android:layout_width="150dp"
+                        android:layout_height="200dp"
                         android:layout_margin="10dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
@@ -134,7 +134,7 @@
                         android:gravity="center_horizontal"
                         android:text="Mi Perfil"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/imageView9"
+                        app:layout_constraintBottom_toTopOf="@+id/profileVi"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -149,7 +149,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/userNameVt"
                         app:layout_constraintHorizontal_bias="0.461"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+                        app:layout_constraintTop_toBottomOf="@+id/profileVi" />
 
                     <TextView
                         android:id="@+id/textView14"
