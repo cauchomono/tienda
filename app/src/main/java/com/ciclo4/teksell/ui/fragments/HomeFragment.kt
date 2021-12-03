@@ -60,6 +60,10 @@ class HomeFragment : Fragment(), ProductsListener {
         observeViewModel()
 
     }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
     fun observeViewModel(){
         productosViewModel.listProducts.observe(viewLifecycleOwner, Observer<List<Productos>> {

@@ -67,11 +67,9 @@ class AdminDetailDialogFragment : Fragment() {
 
         firestoreService.profilePhoto.downloadUrl.addOnSuccessListener {
             Picasso.get().load(it).into(binding.idPhotoAdmin)
-
         }.addOnFailureListener {
             Toast.makeText(this.context,"No se pudo cargar la imagen",Toast.LENGTH_LONG).show()
         }
-
 
         binding.idPhotoAdmin?.setOnClickListener {
 
@@ -88,8 +86,6 @@ class AdminDetailDialogFragment : Fragment() {
                 Pair("address",binding.etDireccionAdmin?.text.toString()),
 
             )
-
-
 
             usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
             usuarioViewModel.updateUserInFirebase(settingsMap)

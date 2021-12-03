@@ -34,6 +34,10 @@ class ProfileFragment : Fragment(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
     override fun onMapReady(p0: GoogleMap) {
         val ubication = Ubication()

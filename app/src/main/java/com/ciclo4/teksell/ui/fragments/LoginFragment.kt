@@ -101,7 +101,10 @@ class LoginFragment : Fragment() {
 
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
     fun existUser(view: View) {
 //        if(NODATA){

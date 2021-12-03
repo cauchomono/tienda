@@ -73,7 +73,8 @@ class AdminFragment : Fragment() {
 
         }.addOnFailureListener {
 
-            Toast.makeText(this.context,"No se pudo cargar la imagen", Toast.LENGTH_LONG).show()
+            Toast.makeText(this.context,"No se cargo la imagen de perfil. Si es la primera vez, configurela en editar",
+                Toast.LENGTH_LONG).show()
 
         }
 
@@ -82,8 +83,6 @@ class AdminFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
-
     }
 
 
