@@ -15,10 +15,12 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ciclo4.teksell.R
 import com.ciclo4.teksell.databinding.FragmentAdminDetailDialogBinding
+import com.ciclo4.teksell.model.Usuarios
 import com.ciclo4.teksell.network.FirestoreService
 import com.ciclo4.teksell.viewmodel.UsuarioViewModel
 import com.google.firebase.ktx.Firebase
@@ -63,6 +65,11 @@ class AdminDetailDialogFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
+        usuarioViewModel.getUserFromFirebase()
+
+
+
         val firestoreService = FirestoreService()
 
         firestoreService.profilePhoto.downloadUrl.addOnSuccessListener {
@@ -93,7 +100,17 @@ class AdminDetailDialogFragment : Fragment() {
             findNavController().navigate(R.id.navAdminFragment)
         }
 
+        observeViewModel()
+    }
 
+    fun observeViewModel(){
+
+        usuarioViewModel.usuarios.observe(viewLifecycleOwner, Observer<Usuarios>{ usuarios ->
+
+            binding.etNombreAdmin?.setText(usuarios.name)
+            binding.etDireccionAdmin?.setText(usuarios.address)
+            binding.etTelefonoAdmin?.setText(usuarios.address)
+        })
     }
 
 }

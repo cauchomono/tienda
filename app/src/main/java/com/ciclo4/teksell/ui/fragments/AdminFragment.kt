@@ -72,19 +72,11 @@ class AdminFragment : Fragment() {
             Picasso.get().load(it).into(binding.profileVi)
 
         }.addOnFailureListener {
-
             Toast.makeText(this.context,"No se cargo la imagen de perfil. Si es la primera vez, configurela en editar",
                 Toast.LENGTH_LONG).show()
-
         }
 
-
     }
-
-    override fun onStart() {
-        super.onStart()
-    }
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
