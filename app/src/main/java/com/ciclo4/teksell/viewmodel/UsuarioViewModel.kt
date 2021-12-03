@@ -1,6 +1,7 @@
 package com.ciclo4.teksell.viewmodel
 
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ciclo4.teksell.model.Productos
@@ -47,9 +48,13 @@ class UsuarioViewModel: ViewModel() {
      fun getUserFromFirebase() {
          firestoreService.getUsersDetail(object : Callback<Usuarios> {
              override fun OnSuccess(result: Usuarios?) {
+                 if(result == null){
+                     createUserFirebaseFromProviders()
+                     proccessFinished()
+                 }else{
                  usuarios.postValue(result!!)
-                 proccessFinished()
-             }
+                 proccessFinished()}}
+
 
              override fun OnFailed(exception: Exception) {
                  proccessFinished()

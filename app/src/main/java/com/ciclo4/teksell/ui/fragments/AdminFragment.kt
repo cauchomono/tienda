@@ -23,6 +23,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.databinding.FragmentAdminBinding
 import com.ciclo4.teksell.model.Usuarios
 import com.ciclo4.teksell.network.FirestoreService
 import com.ciclo4.teksell.ui.activities.InitialActivity
@@ -37,9 +38,17 @@ import java.io.File
 class AdminFragment : Fragment() {
 
     private lateinit var usuarioViewModel  : UsuarioViewModel
+    private lateinit var binding: FragmentAdminBinding
 
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentAdminBinding.inflate(layoutInflater)
 
+        return inflater.inflate(R.layout.fragment_admin, container, false)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,21 +80,19 @@ class AdminFragment : Fragment() {
 
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin, container, false)
-    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+         val firestoreService = FirestoreService()
 
         usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
         usuarioViewModel.getUserFromFirebase()
+//        firestoreService.userDb.collection("users").document("ss").get()
+//            .addOnFailureListener { Toast.makeText(this.context,"onfailure",Toast.LENGTH_LONG).show()}
+//            .addOnCanceledListener { Toast.makeText(this.context,"oncanceled",Toast.LENGTH_LONG).show() }
+
 
 
         observeViewModel()
