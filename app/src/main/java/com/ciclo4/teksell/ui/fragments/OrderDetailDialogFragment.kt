@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.Navigation
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.databinding.FragmentOrderDetailDialogBinding
 import com.ciclo4.teksell.model.ListaProductos
 import com.ciclo4.teksell.model.Productos
 import com.squareup.picasso.Picasso
@@ -17,18 +18,16 @@ import com.squareup.picasso.Picasso
 
 class OrderFragment : Fragment() {
 
+    private var _binding: FragmentOrderDetailDialogBinding? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view =inflater.inflate(R.layout.fragment_order_detail_dialog, container, false)
-
+        _binding = FragmentOrderDetailDialogBinding.inflate(inflater, container, false)
+        val view = binding.root
         return view
     }
 
@@ -39,20 +38,15 @@ class OrderFragment : Fragment() {
 
         val producto = arguments?.getSerializable("product") as Productos
 
-        val image = view.findViewById<ImageView>(R.id.imageV)
-        val name = view.findViewById<TextView>(R.id.tvName)
-        val price = view.findViewById<TextView>(R.id.tvPrice)
-        val car = view.findViewById<TextView>(R.id.tvCaracteristica)
 
 
-        car.text = producto.caracteristicas
-        Picasso.get().load(producto.imagen).into(image)
-        name.text = (producto.marca+": "+producto.modelo)
-        price.text = ("$" + producto.precio)
+        binding.tvCaracteristica.text = producto.caracteristicas
+        Picasso.get().load(producto.imagen).into(binding.imageV)
+        binding.tvName.text = (producto.marca+": "+producto.modelo)
+        binding.tvPrice.text = ("$" + producto.precio)
 
 
-        val btn = view.findViewById<Button>(R.id.btnAgregar)
-        btn.setOnClickListener{
+        binding.btnAgregar.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.navHomeFragment)
             ListaProductos.addProductoToCarrito(producto)
         }

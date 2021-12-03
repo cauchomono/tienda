@@ -13,43 +13,39 @@ import androidx.fragment.app.findFragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.databinding.FragmentInitialViewBinding
 import com.ciclo4.teksell.ui.activities.MainActivity
 
 
 class InitialViewFragment : Fragment() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private var _binding: FragmentInitialViewBinding? = null
 
-
-    }
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        _binding = FragmentInitialViewBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-        val rootview = inflater.inflate(R.layout.fragment_initial_view, container, false)
-        return rootview
+        return view
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val loginBtn = view.findViewById<Button>(R.id.loginBtn)
 
-        loginBtn.setOnClickListener {
+        binding.loginBtn.setOnClickListener {
             findNavController().navigate(R.id.loginFragment)
         }
 
-        val registerBtn = view.findViewById<Button>(R.id.registerBtn)
-        registerBtn.setOnClickListener {
+        binding.registerBtn.setOnClickListener {
             findNavController().navigate(R.id.registerFragment)
         }
-
 
     }
 }

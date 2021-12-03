@@ -10,12 +10,16 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+private lateinit var binding: ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
         configNav()
         val fragmentManager = supportFragmentManager
     }

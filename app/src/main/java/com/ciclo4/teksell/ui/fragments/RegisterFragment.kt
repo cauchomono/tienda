@@ -11,6 +11,7 @@ import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.databinding.FragmentRegisterBinding
 import com.ciclo4.teksell.viewmodel.UsuarioViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,25 +19,26 @@ import com.google.firebase.firestore.FirebaseFirestore
 class RegisterFragment : Fragment() {
     private lateinit var usuarioViewModel  : UsuarioViewModel
 
-    private val userDb =  FirebaseFirestore.getInstance()
-    //override fun onCreate(savedInstanceState: Bundle?) {
-     //   super.onCreate(savedInstanceState)
-    //}
+    private var _binding: FragmentRegisterBinding? = null
+
+    private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val newUserBtn = view.findViewById<Button>(R.id.newUserBtn)
-        newUserBtn.setOnClickListener {
+
+        binding.newUserBtn.setOnClickListener {
             if(addUser(view)){
                 showAlert("Registro exitoso!", "El usuario ha sido creado exitosamente, ¡Bienvenido!")
                 findNavController().navigate(R.id.initialViewFragment)

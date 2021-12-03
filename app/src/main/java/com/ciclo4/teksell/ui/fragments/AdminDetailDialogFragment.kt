@@ -18,6 +18,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.databinding.FragmentAdminDetailDialogBinding
 import com.ciclo4.teksell.network.FirestoreService
 import com.ciclo4.teksell.viewmodel.UsuarioViewModel
 import com.google.firebase.ktx.Firebase
@@ -30,55 +31,50 @@ class AdminDetailDialogFragment : Fragment() {
 
 
     lateinit var usuarioViewModel: UsuarioViewModel
+    private var _binding: FragmentAdminDetailDialogBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentAdminDetailDialogBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+
+    }
 
     val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri ->
-        val idPhotoAdmin = view?.findViewById<ImageButton>(R.id.idPhotoAdmin)
-        idPhotoAdmin?.setImageURI(uri)
+
+        binding.idPhotoAdmin?.setImageURI(uri)
         usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
         usuarioViewModel.updatePhotoProfile(uri)
 
 
     }
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin_detail_dialog, container, false)
 
-
-
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         val firestoreService = FirestoreService()
 
-        val idPhotoAdmin = view?.findViewById<ImageButton>(R.id.idPhotoAdmin)
-
         firestoreService.profilePhoto.downloadUrl.addOnSuccessListener {
-            Picasso.get().load(it).into(idPhotoAdmin)
+            Picasso.get().load(it).into(binding.idPhotoAdmin)
 
         }.addOnFailureListener {
             Toast.makeText(this.context,"No se pudo cargar la imagen",Toast.LENGTH_LONG).show()
         }
 
 
+        binding.idPhotoAdmin?.setOnClickListener {
 
-
-        idPhotoAdmin?.setOnClickListener {
-            val firestoreService = FirestoreService()
             getContent.launch("image/*")
 
         }
@@ -86,16 +82,10 @@ class AdminDetailDialogFragment : Fragment() {
 
         btnAdmin?.setOnClickListener {
 
-            val etNombreAdmin = view?.findViewById<EditText>(R.id.etNombreAdmin)
-            val etDireccionAdmin = view?.findViewById<EditText>(R.id.etDireccionAdmin)
-            val etTelefonoAdmin = view?.findViewById<EditText>(R.id.etTelefonoAdmin)
-
-
-
             val settingsMap : Map<String,Any> = mapOf(
-                Pair("name",etNombreAdmin?.text.toString()),
-                Pair("contact",etTelefonoAdmin?.text.toString()),
-                Pair("address",etDireccionAdmin?.text.toString()),
+                Pair("name",binding.etNombreAdmin?.text.toString()),
+                Pair("contact",binding.etTelefonoAdmin?.text.toString()),
+                Pair("address",binding.etDireccionAdmin?.text.toString()),
 
             )
 

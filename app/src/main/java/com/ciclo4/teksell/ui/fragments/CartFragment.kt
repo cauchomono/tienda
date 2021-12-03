@@ -9,17 +9,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.databinding.FragmentCartBinding
 import com.ciclo4.teksell.view.adapter.ProductosInCartAdapter
 import com.ciclo4.teksell.model.ListaProductos
 
 
 class CartFragment : Fragment() {
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private var _binding: FragmentCartBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +25,8 @@ class CartFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        val view = inflater.inflate(R.layout.fragment_cart, container, false)
+        _binding = FragmentCartBinding.inflate(inflater, container, false)
+        val view = binding.root
         initRecycler(view)
         return view
     }
@@ -37,9 +36,9 @@ class CartFragment : Fragment() {
         val adapter = ProductosInCartAdapter(ListaProductos.productos)
         rvCart.layoutManager = LinearLayoutManager(this.context)
         rvCart.adapter = adapter
-        view.findViewById<TextView>(R.id.totalTv).text ="Precio total: $"+ ListaProductos.total
-        view.findViewById<TextView>(R.id.subtotalTv).text = "Subtotal: $"+ ListaProductos.subtotal
-        view.findViewById<TextView>(R.id.valorIvaTv).text = "Valor iva: $"+ ListaProductos.valor_iva
+        binding.totalTv.text ="Precio total: $"+ ListaProductos.total
+        binding.subtotalTv.text = "Subtotal: $"+ ListaProductos.subtotal
+        binding.valorIvaTv.text = "Valor iva: $"+ ListaProductos.valor_iva
     }
 
 

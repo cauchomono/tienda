@@ -38,34 +38,40 @@ import java.io.File
 class AdminFragment : Fragment() {
 
     private lateinit var usuarioViewModel  : UsuarioViewModel
-    private lateinit var binding: FragmentAdminBinding
+
+    private var _binding : FragmentAdminBinding? = null
+    private val binding get() = _binding!!
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAdminBinding.inflate(layoutInflater)
+        _binding = FragmentAdminBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
-        return inflater.inflate(R.layout.fragment_admin, container, false)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val firestoreService = FirestoreService()
         val uri = Uri.parse("android.resource://com.ciclo4.teksell/" + R.drawable.logo)
+
         val profileVi = view?.findViewById<ImageView>(R.id.profileVi)
         profileVi?.setImageURI(uri)
 
 
         firestoreService.profilePhoto.downloadUrl.addOnSuccessListener {
-            val profileVi = view?.findViewById<ImageView>(R.id.profileVi)
 
-            Picasso.get().load(it).into(profileVi)
 
+            Picasso.get().load(it).into(binding.profileVi)
 
         }.addOnFailureListener {
-
 
             Toast.makeText(this.context,"No se pudo cargar la imagen", Toast.LENGTH_LONG).show()
 
@@ -85,17 +91,12 @@ class AdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-         val firestoreService = FirestoreService()
 
         usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
         usuarioViewModel.getUserFromFirebase()
-//        firestoreService.userDb.collection("users").document("ss").get()
-//            .addOnFailureListener { Toast.makeText(this.context,"onfailure",Toast.LENGTH_LONG).show()}
-//            .addOnCanceledListener { Toast.makeText(this.context,"oncanceled",Toast.LENGTH_LONG).show() }
 
 
 
-        observeViewModel()
         val editBtn = view.findViewById<Button>(R.id.editBtn)
         editBtn.setOnClickListener {
             findNavController().navigate(R.id.adminDetailFragmentDialog)
@@ -112,18 +113,17 @@ class AdminFragment : Fragment() {
                     activity?.finish()
                 }
         }
+        observeViewModel()
+
     }
     fun observeViewModel(){
-        val userNameVt = view?.findViewById<TextView>(R.id.userNameVt)
-        val userDirectionVt = view?.findViewById<TextView>(R.id.userDirectionVt)
-        val userPhoneVt = view?.findViewById<TextView>(R.id.userPhoneVt)
-        val userEmailVt = view?.findViewById<TextView>(R.id.userEmailVt )
+
 
         usuarioViewModel.usuarios.observe(viewLifecycleOwner, Observer<Usuarios>{ usuarios ->
-            userEmailVt?.text = usuarios.email
-            userNameVt?.text =usuarios.name
-            userDirectionVt?.text =usuarios.address
-            userPhoneVt?.text =usuarios.contact
+            binding.userEmailVt?.text = usuarios.email
+            binding.userNameVt?.text =usuarios.name
+            binding.userDirectionVt?.text =usuarios.address
+            binding.userPhoneVt?.text =usuarios.contact
         })
     }
 

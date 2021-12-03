@@ -14,6 +14,7 @@ import android.widget.EditText
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import com.ciclo4.teksell.R
+import com.ciclo4.teksell.databinding.FragmentLoginBinding
 import com.ciclo4.teksell.model.Usuarios
 import com.ciclo4.teksell.ui.activities.MainActivity
 import com.ciclo4.teksell.viewmodel.UsuarioViewModel
@@ -32,6 +33,18 @@ class LoginFragment : Fragment() {
     lateinit var listener: FirebaseAuth.AuthStateListener
     lateinit var providers: List<AuthUI.IdpConfig>
 
+    private var _binding: FragmentLoginBinding? = null
+
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,8 +62,7 @@ class LoginFragment : Fragment() {
             if (user != null) {
                 startActivity(intent)
             }else{
-        val otherBtn = view?.findViewById<Button>(R.id.otherBtn)
-        otherBtn?.setOnClickListener {
+                binding.otherBtn?.setOnClickListener {
                     startActivityForResult(
                         AuthUI.getInstance()
                             .createSignInIntentBuilder()
@@ -62,21 +74,14 @@ class LoginFragment : Fragment() {
 
             }
 
-            val enterBtn = view?.findViewById<Button>(R.id.enterBtn)
-            enterBtn?.setOnClickListener {
+                binding.enterBtn?.setOnClickListener {
                 view?.let { it1 -> existUser(it1) }
             }
         }}
 
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-        ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
-    }
+
 
     override fun onStart() {
         super.onStart()
