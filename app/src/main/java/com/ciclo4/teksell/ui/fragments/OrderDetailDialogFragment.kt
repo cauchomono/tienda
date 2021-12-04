@@ -42,7 +42,6 @@ class OrderFragment : Fragment() {
         val producto = arguments?.getSerializable("product") as Productos
 
 
-
         binding.tvCaracteristica.text = producto.caracteristicas
         Picasso.get().load(producto.imagen).into(binding.imageV)
         binding.tvName.text = (producto.marca+": "+producto.modelo)
@@ -52,6 +51,7 @@ class OrderFragment : Fragment() {
         binding.btnAgregar.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.navHomeFragment)
             ListaProductos.addProductoToCarrito(producto)
+            println("Este es el primer HashCode"+ producto.hashCode())
         }
     }
 

@@ -15,6 +15,9 @@ class UsuarioViewModel: ViewModel() {
     var usuarios = MutableLiveData<Usuarios>()
     var isLoading = MutableLiveData<Boolean>()
 
+    companion object{
+        lateinit var user:Usuarios
+    }
 
 
     fun refresh(){
@@ -52,8 +55,11 @@ class UsuarioViewModel: ViewModel() {
                      createUserFirebaseFromProviders()
                      proccessFinished()
                  }else{
+                     UsuarioViewModel.user = result
                  usuarios.postValue(result!!)
-                 proccessFinished()}}
+                 proccessFinished()
+                 }
+             }
 
 
              override fun OnFailed(exception: Exception) {
