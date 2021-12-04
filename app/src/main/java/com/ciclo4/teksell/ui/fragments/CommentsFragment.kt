@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ciclo4.teksell.R
 import com.ciclo4.teksell.adapter.CommentAdapter
+import com.ciclo4.teksell.databinding.FragmentAdminBinding
 import com.ciclo4.teksell.databinding.FragmentCommentsBinding
 import com.ciclo4.teksell.model.Comment
 import com.ciclo4.teksell.model.Usuarios
@@ -27,12 +28,15 @@ import java.util.*
 
 class ComentsFragment : Fragment() {
 
+    private var username = ""
+    private var name = ""
     private var puntaje:Int=0
     val firestoreService = FirestoreService()
 
     private var _binding: FragmentCommentsBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var usuarioViewModel  : UsuarioViewModel
     private lateinit var commentAdapter: CommentAdapter
     private lateinit var commentViewModel  : CommentViewModel
 
@@ -61,6 +65,8 @@ class ComentsFragment : Fragment() {
 
         commentViewModel = ViewModelProvider(this).get(CommentViewModel::class.java)
         commentViewModel.refresh()
+        usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
+        usuarioViewModel.refresh()
 
         commentAdapter = CommentAdapter()
 
@@ -70,15 +76,15 @@ class ComentsFragment : Fragment() {
         }
 
         observeViewModel()
-
+        observeViewModelUser()
 
         val btnComentar = view.findViewById<Button>(R.id.buttonComentar)
         btnComentar.setOnClickListener {
             val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
             val currentDate = sdf.format(Date())
             val comment = Comment()
-            comment.username = "prueba"
-            comment.name = "nombre"
+            comment.username = username
+            comment.name = name
             comment.comment = view.findViewById<TextInputEditText>(R.id.txtInput).text.toString()
             comment.date = currentDate
             comment.score = puntaje
@@ -120,8 +126,13 @@ class ComentsFragment : Fragment() {
         })
     }
 
+    fun observeViewModelUser(){
 
-
+        usuarioViewModel.refresh()
+        val user = UsuarioViewModel.user
+        name = user.name
+        username = user.email
+    }
 
 
 

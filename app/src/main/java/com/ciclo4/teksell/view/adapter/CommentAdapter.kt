@@ -56,8 +56,8 @@ class CommentAdapter ():
             tvUser.text = (comment.username + ":"+comment.name)
             tvComm.text = comment.comment
             tvFecha.text =  comment.date
-            for(i in 0 until comment.score){
-                stars[i].isVisible = true
+            for(i in stars.indices){
+                stars[i].isVisible = i <= comment.score-1
             }
         }
 
