@@ -1,2 +1,2 @@
-# tienda
-aplicación de tienda de celulares parte de Misión TIC 2022
+# TekSell
+Aplicación pensada para una tienda de celulares, como proyecto para la Misión TIC 2022.
