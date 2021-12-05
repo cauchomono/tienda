@@ -50,7 +50,6 @@ class FirestoreService {
         val uri = Uri.fromFile(File("app/src/main/res/drawable-v24/logo.jpg"))
         storageRef.child("${newUserEmail}/profilePhoto.jpg").putFile(uri)
 
-
     }
 
     fun getUsersDetail(callback: Callback<Usuarios>) {

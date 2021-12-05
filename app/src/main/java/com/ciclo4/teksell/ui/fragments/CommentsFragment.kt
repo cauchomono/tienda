@@ -71,7 +71,8 @@ class ComentsFragment : Fragment() {
         commentAdapter = CommentAdapter()
 
         binding.rvComments.apply {
-            layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+            layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL,
+                false)
             adapter = commentAdapter
         }
 

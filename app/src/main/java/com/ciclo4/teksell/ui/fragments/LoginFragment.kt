@@ -58,7 +58,6 @@ class LoginFragment : Fragment() {
         providers = arrayListOf(
             AuthUI.IdpConfig.GoogleBuilder().build(),
         )
-
             if (user != null) {
                 startActivity(intent)
             }else{
@@ -70,8 +69,6 @@ class LoginFragment : Fragment() {
                             .setAlwaysShowSignInMethodScreen(true)
                             .build(), AUTH_REQUEST_CODE
                     )
-
-
             }
 
                 binding.enterBtn?.setOnClickListener {
@@ -107,11 +104,6 @@ class LoginFragment : Fragment() {
     }
 
     fun existUser(view: View) {
-//        if(NODATA){
-//            loginWithoutData()
-//            return
-//        }
-
         val email = view.findViewById<EditText>(R.id.emailEt).text.toString()
         val pass = view.findViewById<EditText>(R.id.passwordEt).text.toString()
 

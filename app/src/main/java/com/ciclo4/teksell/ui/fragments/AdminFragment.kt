@@ -60,33 +60,24 @@ class AdminFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val firestoreService = FirestoreService()
-        val uri = Uri.parse("android.resource://com.ciclo4.teksell/" + R.drawable.logo)
-
-        val profileVi = view?.findViewById<ImageView>(R.id.profileVi)
-        profileVi?.setImageURI(uri)
-
 
         firestoreService.profilePhoto.downloadUrl.addOnSuccessListener {
-
 
             Picasso.get().load(it).into(binding.profileVi)
 
         }.addOnFailureListener {
-            Toast.makeText(this.context,"No se cargo la imagen de perfil. Si es la primera vez, configurela en editar",
+            Toast.makeText(this.context,"No se cargo la imagen de perfil." +
+                    " Si es la primera vez, configurela en editar",
                 Toast.LENGTH_LONG).show()
         }
-
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
         usuarioViewModel.getUserFromFirebase()
-
-
 
         val editBtn = view.findViewById<Button>(R.id.editBtn)
         editBtn.setOnClickListener {

@@ -64,11 +64,8 @@ class AdminDetailDialogFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
         usuarioViewModel.getUserFromFirebase()
-
-
 
         val firestoreService = FirestoreService()
 
@@ -83,6 +80,7 @@ class AdminDetailDialogFragment : Fragment() {
             getContent.launch("image/*")
 
         }
+
         val btnAdmin = view?.findViewById<Button>(R.id.btnAdmin)
 
         btnAdmin?.setOnClickListener {
@@ -91,9 +89,7 @@ class AdminDetailDialogFragment : Fragment() {
                 Pair("name",binding.etNombreAdmin?.text.toString()),
                 Pair("contact",binding.etTelefonoAdmin?.text.toString()),
                 Pair("address",binding.etDireccionAdmin?.text.toString()),
-
             )
-
             usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
             usuarioViewModel.updateUserInFirebase(settingsMap)
 
@@ -109,7 +105,7 @@ class AdminDetailDialogFragment : Fragment() {
 
             binding.etNombreAdmin?.setText(usuarios.name)
             binding.etDireccionAdmin?.setText(usuarios.address)
-            binding.etTelefonoAdmin?.setText(usuarios.address)
+            binding.etTelefonoAdmin?.setText(usuarios.contact)
         })
     }
 

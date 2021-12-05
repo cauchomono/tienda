@@ -80,15 +80,18 @@ class RegisterFragment : Fragment() {
             return false
         }
 
+
+
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,pass1)
+
         var userRegistered = hashMapOf(
             "name" to name,
             "user" to user,
             "email" to email,
             "address" to address,
             "contact" to contact)
-
         usuarioViewModel.createUserFirebase(userRegistered,email)
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,pass1)
+
         return true
 
     }
